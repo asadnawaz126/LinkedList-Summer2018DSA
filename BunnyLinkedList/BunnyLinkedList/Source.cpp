@@ -18,11 +18,12 @@ struct bunny {
 
 
 bunny* create(vector<string> bunnyData);
-void insertAtBeginning(bunny* b);
-void insert(bunny* b);
-void display();
-void babyBunnies();
-void displayBabyNames();
+void insertAtBeginning(bunny* b); //Insert bunny at beginning of list
+void insert(bunny* b); // insert bunny into list
+void display();	// display bunnies list
+void babyBunnies();	//add baby bunnies
+void displayBabyNames();	//display baby bunnies
+bool isAdult(bunny* Bunny); // checks if bunny is adult
 
 vector<string> randomNames = {"Ka", "Lorine", "Edith","Cedrick","Dewitt","Rosina","Loma",
 							"Kiyoko","Elissa","Opal","Darline","Cristopher","Aurelio","Rebeca","Katheryn","Marya","Mauricio"};
@@ -50,9 +51,9 @@ int main() {
 		getline(inFile, Bunny);
 
 		//cout << endl << Bunny << endl;
-		/*if (loopCount>6) {
+		if (loopCount>6) {
 			break;
-		}*/
+		}
 
 	
 
@@ -179,6 +180,8 @@ void insert(bunny* b) {
 void display() {
 	bunny* temp = start;
 
+	cout << "Total Bunnies: " << bunnyCount<<endl;
+
 	while (temp->next != NULL) {
 		cout << temp->name << " " << temp->sex << " " << temp->color << " " << temp->age << endl;
 		temp = temp->next;
@@ -192,35 +195,35 @@ void babyBunnies() {
 	bunny* temp = start;
 
 	
-	int maleCount = 0;
-	int femaleCount = 0;
+	int adultMaleCount = 0;
+	int adultFemaleCount = 0;
 
 	while (temp->next != NULL) {
-		if (temp->sex == 'M') {
-			maleCount++;
+		if (temp->sex == 'M' && isAdult(temp)) {
+			adultMaleCount++;
 		}
-		else if (temp->sex == 'F') {
-			femaleCount++;
+		else if (temp->sex == 'F' && isAdult(temp)) {
+			adultFemaleCount++;
 		}
 
 		temp = temp->next;
 	}
 
-	if (temp->sex == 'M')
-		maleCount++;
-	else if (temp->sex == 'F')
-		femaleCount++;
+	if (temp->sex == 'M' && isAdult(temp))
+		adultMaleCount++;
+	else if (temp->sex == 'F' && isAdult(temp))
+		adultFemaleCount++;
 
 	srand(time(NULL));
 
-	if (maleCount >= 1) {
-		for (int i = 0;i < femaleCount;i++) {
+	if (adultMaleCount >= 1) {
+		for (int i = 0;i < adultFemaleCount;i++) {
 			vector<string> bunnyData;
 
 			bunnyData.push_back(randomNames[rand() % randomNames.size()]);
 			bunnyData.push_back(randomSex[rand() % randomSex.size()]);
 			bunnyData.push_back(randomColors[rand() % randomColors.size()]);
-			bunnyData.push_back(to_string(rand() % 6));
+			bunnyData.push_back("0");
 
 			bunny* newBunny = create(bunnyData);
 			insert(newBunny);
@@ -243,5 +246,14 @@ void displayBabyNames() {
 		temp = temp->next;
 	}
 	
+}
+
+bool isAdult(bunny *Bunny) {
+
+	if (Bunny->age >= 2)
+		return true;
+
+	else
+		return false;
 }
 

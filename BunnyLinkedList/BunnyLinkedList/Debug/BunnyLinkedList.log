@@ -1,5 +1,5 @@
 ﻿  Source.cpp
-c:\users\asadn\documents\visual studio 2015\projects\bunnylinkedlist\bunnylinkedlist\source.cpp(65): warning C4018: '<': signed/unsigned mismatch
-c:\users\asadn\documents\visual studio 2015\projects\bunnylinkedlist\bunnylinkedlist\source.cpp(144): warning C4101: 'temp': unreferenced local variable
-c:\users\asadn\documents\visual studio 2015\projects\bunnylinkedlist\bunnylinkedlist\source.cpp(214): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  BunnyLinkedList.vcxproj -> C:\Users\asadn\Documents\Visual Studio 2015\Projects\BunnyLinkedList\Debug\BunnyLinkedList.exe
+f:\github\linkedlist-summer2018dsa\bunnylinkedlist\bunnylinkedlist\source.cpp(66): warning C4018: '<': signed/unsigned mismatch
+f:\github\linkedlist-summer2018dsa\bunnylinkedlist\bunnylinkedlist\source.cpp(145): warning C4101: 'temp': unreferenced local variable
+f:\github\linkedlist-summer2018dsa\bunnylinkedlist\bunnylinkedlist\source.cpp(217): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  BunnyLinkedList.vcxproj -> F:\GitHub\LinkedList-Summer2018DSA\BunnyLinkedList\Debug\BunnyLinkedList.exe
