@@ -1,0 +1,18 @@
+1
+Roger M Black 3
+Dumper M White 3
+Peter M Brown 1
+Daisy F Black 3
+Ariel F White 4
+2
+Else F Black 2
+Anna F White 2
+Moana F Brown 3
+Daisy F Black 3
+Ariel F White 3
+3
+Ryu M Black 7
+Ken M White 8
+Cammy F Brown 7
+Juri F Black 8
+Sakura F White 9
