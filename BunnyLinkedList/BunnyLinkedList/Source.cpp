@@ -1,9 +1,3 @@
-/*DSA SUMMER LAB 1
-Author: Asad Nawaz
-*/
-
-
-
 #include <iostream>
 #include<stdio.h>
 #include <fstream>
@@ -24,12 +18,12 @@ struct bunny {
 
 
 bunny* create(vector<string> bunnyData);
-void insertAtBeginning(bunny* b); //Insert bunny at beginning of list
-void insert(bunny* b); // insert bunny into list
-void display();	// display bunnies list
-void babyBunnies();	//add baby bunnies
-void displayBabyNames();	//display baby bunnies
-bool isAdult(bunny* Bunny); // checks if bunny is adult
+void insertAtBeginning(bunny* b);
+void insert(bunny* b);
+void display();
+void babyBunnies();
+void displayBabyNames();
+bool isAdult(bunny *Bunny);
 
 vector<string> randomNames = {"Ka", "Lorine", "Edith","Cedrick","Dewitt","Rosina","Loma",
 							"Kiyoko","Elissa","Opal","Darline","Cristopher","Aurelio","Rebeca","Katheryn","Marya","Mauricio"};
@@ -41,29 +35,21 @@ int bunnyCount = 0; //number of Bunnies
 int main() {
 
 	start = NULL;
-	//bunny *newBunny = NULL;
 
-	string fileName = "Task 1 Input.txt";
+	string fileName = "Input1.txt";
 
-	ifstream inFile(fileName);
+	ifstream inFile;
+
+	inFile.open(fileName);
 
 	vector<string> bunnyData(4);
 
-	int loopCount = 1;
+	int loopCount = 0;
 	
-	while (inFile) {
+	while (!inFile.eof()) {
 
 		string Bunny;
 		getline(inFile, Bunny);
-
-		//cout << endl << Bunny << endl;
-		if (loopCount>6) {
-			break;
-		}
-
-	
-
-		if (Bunny.length() > 1) {
 
 			int spacePosition = 0; //position of whitespace
 
@@ -88,26 +74,12 @@ int main() {
 
 			}
 
-			if (loopCount == 1) {
-				bunny *newBunny = create(bunnyData);
-				//cout << newBunny->color << endl;
-				insertAtBeginning(newBunny);
-			}
 
-			else {
-				bunny *newBunny = create(bunnyData);
-				//cout << "after bunny created";
-				insert(newBunny);
-			}
+			bunny *newBunny = create(bunnyData);
+			insert(newBunny);
 
-			//cout << endl << "LoopCount is: "<<loopCount<< endl;
+
 			loopCount++;
-		}
-
-		else {
-			loopCount++;
-			continue;
-		}
 	}
 	babyBunnies();
 	display();
@@ -146,18 +118,18 @@ bunny* create(vector<string> bunnyData) {
 
 void insertAtBeginning(bunny* b) {
 
-
-	//cout << b->color<<endl;
 	bunny* temp;
 
 	if (start == NULL) {
 		start = b;
 		start->next = NULL;
 	}
+
 }
 
 void insert(bunny* b) {
 
+	bunnyCount++;
 
 	bunny* temp = start;
 	
@@ -179,14 +151,14 @@ void insert(bunny* b) {
 		
 	}
 
-	bunnyCount++;  //increase number of Bunnies by 1
+	  //increase number of Bunnies by 1
 
 }
 
 void display() {
 	bunny* temp = start;
 
-	cout << "Total Bunnies: " << bunnyCount<<endl;
+	cout << "Total number of bunnies: " << bunnyCount << endl << endl;
 
 	while (temp->next != NULL) {
 		cout << temp->name << " " << temp->sex << " " << temp->color << " " << temp->age << endl;
@@ -200,7 +172,7 @@ void babyBunnies() {
 
 	bunny* temp = start;
 
-	
+
 	int adultMaleCount = 0;
 	int adultFemaleCount = 0;
 
@@ -232,11 +204,21 @@ void babyBunnies() {
 			bunnyData.push_back("0");
 
 			bunny* newBunny = create(bunnyData);
+			//cout << "Bunny: " << newBunny->name << " created" << endl << endl;
 			insert(newBunny);
+			
 
 		}
 	}
 
+}
+bool isAdult(bunny *Bunny) {
+
+	if (Bunny->age >= 2)
+		return true;
+
+	else
+		return false;
 }
 
 void displayBabyNames() {
@@ -252,14 +234,5 @@ void displayBabyNames() {
 		temp = temp->next;
 	}
 	
-}
-
-bool isAdult(bunny *Bunny) {
-
-	if (Bunny->age >= 2)
-		return true;
-
-	else
-		return false;
 }
 
